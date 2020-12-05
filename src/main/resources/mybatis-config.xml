@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		<mapper resource="mapper/UserVoMapper.xml" />
+		<mapper resource="mapper/CustomerInfoVoMapper.xml" />
+		<mapper resource="mapper/CustomerOldVoMapper.xml" />
+		<mapper resource="mapper/VoteAnswerVoMapper.xml" />
+		<mapper resource="mapper/VoteBaseVoMapper.xml" />
+		<mapper resource="mapper/VoteLogVoMapper.xml" />
+		<mapper resource="mapper/VoteUserVoMapper.xml" />
+		<mapper resource="mapper/InsureInfoVoMapper.xml" />
+	</mappers>
+</configuration>

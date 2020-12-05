@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.CustomerInfoVoMapper">
+  <resultMap id="BaseResultMap" type="com.tk.sz.model.CustomerInfoVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="adress" jdbcType="VARCHAR" property="adress" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="cardType" jdbcType="VARCHAR" property="cardtype" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="updatedate" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="createcode" jdbcType="VARCHAR" property="createcode" />
+    <result column="updatecode" jdbcType="VARCHAR" property="updatecode" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="votecode" jdbcType="VARCHAR" property="votecode" />
+  </resultMap>
+  
+  
+  
+  
+  
+  <sql id="Base_Column_List">
+    id, name, telphone, adress, identity, cardType, age, sex, remark, createdate, updatedate, 
+    createcode, updatecode, usercode, votecode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_customer_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_customer_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tk.sz.model.CustomerInfoVo">
+    insert into v_customer_info (id, name, telphone, 
+      adress, identity, cardType, 
+      age, sex, remark, createdate, 
+      updatedate, createcode, updatecode, 
+      usercode, votecode)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{adress,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, #{cardtype,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{createcode,jdbcType=VARCHAR}, #{updatecode,jdbcType=VARCHAR}, 
+      #{usercode,jdbcType=VARCHAR} ,#{votecode,jdbcType=VARCHAR}   )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tk.sz.model.CustomerInfoVo">
+    insert into v_customer_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="adress != null">
+        adress,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+      <if test="cardtype != null">
+        cardType,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="updatedate != null">
+        updatedate,
+      </if>
+      <if test="createcode != null">
+        createcode,
+      </if>
+      <if test="updatecode != null">
+        updatecode,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="votecode != null">
+        votecode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null">
+        #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null">
+        #{cardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createcode != null">
+        #{createcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatecode != null">
+        #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+        <if test="votecode != null">
+        #{votecode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tk.sz.model.CustomerInfoVo">
+    update v_customer_info
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null">
+        adress = #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null">
+        cardType = #{cardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null">
+        updatedate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createcode != null">
+        createcode = #{createcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatecode != null">
+        updatecode = #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tk.sz.model.CustomerInfoVo">
+    update v_customer_info
+    set name = #{name,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      adress = #{adress,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      cardType = #{cardtype,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      updatedate = #{updatedate,jdbcType=TIMESTAMP},
+      createcode = #{createcode,jdbcType=VARCHAR},
+      updatecode = #{updatecode,jdbcType=VARCHAR},
+      usercode = #{usercode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectByName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from v_customer_info
+		where (name = #{name,jdbcType=VARCHAR} or telphone = #{telphone,jdbcType=VARCHAR} ) and  votecode = #{votecode,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectAllVoteInfo" parameterType="java.lang.String"	resultType="map">
+		SELECT
+		a.usercode,
+		a.name,
+		a.telphone,
+		a.createdate,
+		a.remark ,
+		b.votetimes,
+		b.userdeptchannel ,
+		b.userdept
+		FROM
+		v_customer_info a
+		LEFT JOIN
+		v_vote_user b
+		ON a.usercode = b.usercode	
+		WHERE 1 = 1 AND a.`votecode` = #{votecode,jdbcType=VARCHAR}  
+		            AND b.`votecode` =#{votecode,jdbcType=VARCHAR} 	
+		    ORDER BY a.`createdate`  DESC
+	</select>
+
+
+	<select id="selectLqVoteInfo" parameterType="java.lang.String"	resultType="map">
+     	SELECT 
+			  a.`usercode`,
+			  a.`name`,
+			  a.`telphone`,
+			  b.`userdeptchannel`,
+			  a.`remark`,
+			  a.`createdate`,
+			  c.`answer1`,
+			  c.`answer2`,
+			  c.`answer3`,
+			  c.`answer4` 
+			FROM
+			  v_customer_info a 
+			  LEFT JOIN v_vote_user b 
+			    ON a.`usercode` = b.`usercode` 
+			  LEFT JOIN v_vote_answer c 
+			    ON a.`usercode` = c.`usercode` 
+			WHERE 1 = 1 
+			  AND a.`votecode` =  #{votecode,jdbcType=VARCHAR}
+			ORDER BY a.`createdate`  DESC
+	</select>
+
+
+	<select id="isHaveSub" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from v_customer_info
+		where identity = #{identity,jdbcType=VARCHAR} and  votecode = #{votecode,jdbcType=VARCHAR} 
+	</select>
+
+
+   <select id="selectByVoteCode" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from v_customer_info
+		where    votecode = #{votecode,jdbcType=VARCHAR}
+	</select>
+
+  
+</mapper>

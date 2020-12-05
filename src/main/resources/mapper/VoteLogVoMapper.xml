@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.VoteLogVoMapper">
+  <resultMap id="BaseResultMap" type="com.tk.sz.model.VoteLogVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="voteCode" jdbcType="VARCHAR" property="votecode" />
+    <result column="userCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="openDate" jdbcType="TIMESTAMP" property="opendate" />
+    <result column="openIp" jdbcType="VARCHAR" property="openip" />
+    <result column="openAdress" jdbcType="VARCHAR" property="openadress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, voteCode, userCode, openDate, openIp, openAdress
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_vote_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_vote_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tk.sz.model.VoteLogVo">
+    insert into v_vote_log (id, voteCode, userCode, 
+      openDate, openIp, openAdress
+      )
+    values (#{id,jdbcType=INTEGER}, #{votecode,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, 
+      #{opendate,jdbcType=TIMESTAMP}, #{openip,jdbcType=VARCHAR}, #{openadress,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tk.sz.model.VoteLogVo">
+    insert into v_vote_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="votecode != null">
+        voteCode,
+      </if>
+      <if test="usercode != null">
+        userCode,
+      </if>
+      <if test="opendate != null">
+        openDate,
+      </if>
+      <if test="openip != null">
+        openIp,
+      </if>
+      <if test="openadress != null">
+        openAdress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="votecode != null">
+        #{votecode,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="opendate != null">
+        #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openip != null">
+        #{openip,jdbcType=VARCHAR},
+      </if>
+      <if test="openadress != null">
+        #{openadress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tk.sz.model.VoteLogVo">
+    update v_vote_log
+    <set>
+      <if test="votecode != null">
+        voteCode = #{votecode,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        userCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="opendate != null">
+        openDate = #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openip != null">
+        openIp = #{openip,jdbcType=VARCHAR},
+      </if>
+      <if test="openadress != null">
+        openAdress = #{openadress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tk.sz.model.VoteLogVo">
+    update v_vote_log
+    set voteCode = #{votecode,jdbcType=VARCHAR},
+      userCode = #{usercode,jdbcType=VARCHAR},
+      openDate = #{opendate,jdbcType=TIMESTAMP},
+      openIp = #{openip,jdbcType=VARCHAR},
+      openAdress = #{openadress,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

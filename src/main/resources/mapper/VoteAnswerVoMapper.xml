@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.VoteAnswerVoMapper">
+  <resultMap id="BaseResultMap" type="com.tk.sz.model.VoteAnswerVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="voteCode" jdbcType="VARCHAR" property="votecode" />
+    <result column="answer1" jdbcType="VARCHAR" property="answer1" />
+    <result column="answer2" jdbcType="VARCHAR" property="answer2" />
+    <result column="answer3" jdbcType="VARCHAR" property="answer3" />
+    <result column="answer4" jdbcType="VARCHAR" property="answer4" />
+    <result column="answer5" jdbcType="VARCHAR" property="answer5" />
+    <result column="answer6" jdbcType="VARCHAR" property="answer6" />
+    <result column="answer7" jdbcType="VARCHAR" property="answer7" />
+    <result column="answer8" jdbcType="VARCHAR" property="answer8" />
+    <result column="answer9" jdbcType="VARCHAR" property="answer9" />
+    <result column="answer10" jdbcType="VARCHAR" property="answer10" />
+    <result column="answer11" jdbcType="VARCHAR" property="answer11" />
+    <result column="answer12" jdbcType="VARCHAR" property="answer12" />
+    <result column="answer13" jdbcType="VARCHAR" property="answer13" />
+    <result column="answer14" jdbcType="VARCHAR" property="answer14" />
+    <result column="answer15" jdbcType="VARCHAR" property="answer15" />
+    <result column="answer16" jdbcType="VARCHAR" property="answer16" />
+    <result column="answer17" jdbcType="VARCHAR" property="answer17" />
+    <result column="answer18" jdbcType="VARCHAR" property="answer18" />
+    <result column="answer19" jdbcType="VARCHAR" property="answer19" />
+    <result column="answer20" jdbcType="VARCHAR" property="answer20" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="customername" jdbcType="VARCHAR" property="customername" />
+    <result column="customertel" jdbcType="VARCHAR" property="customertel" />
+    <result column="customerComp" jdbcType="VARCHAR" property="customercomp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, voteCode, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, 
+    answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, 
+    answer18, answer19, answer20, usercode, customername, customertel, customerComp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_vote_answer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_vote_answer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tk.sz.model.VoteAnswerVo">
+    insert into v_vote_answer (id, voteCode, answer1, 
+      answer2, answer3, answer4, 
+      answer5, answer6, answer7, 
+      answer8, answer9, answer10, 
+      answer11, answer12, answer13, 
+      answer14, answer15, answer16, 
+      answer17, answer18, answer19, 
+      answer20, usercode, customername, 
+      customertel, customerComp)
+    values (#{id,jdbcType=INTEGER}, #{votecode,jdbcType=VARCHAR}, #{answer1,jdbcType=VARCHAR}, 
+      #{answer2,jdbcType=VARCHAR}, #{answer3,jdbcType=VARCHAR}, #{answer4,jdbcType=VARCHAR}, 
+      #{answer5,jdbcType=VARCHAR}, #{answer6,jdbcType=VARCHAR}, #{answer7,jdbcType=VARCHAR}, 
+      #{answer8,jdbcType=VARCHAR}, #{answer9,jdbcType=VARCHAR}, #{answer10,jdbcType=VARCHAR}, 
+      #{answer11,jdbcType=VARCHAR}, #{answer12,jdbcType=VARCHAR}, #{answer13,jdbcType=VARCHAR}, 
+      #{answer14,jdbcType=VARCHAR}, #{answer15,jdbcType=VARCHAR}, #{answer16,jdbcType=VARCHAR}, 
+      #{answer17,jdbcType=VARCHAR}, #{answer18,jdbcType=VARCHAR}, #{answer19,jdbcType=VARCHAR}, 
+      #{answer20,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, #{customername,jdbcType=VARCHAR}, 
+      #{customertel,jdbcType=VARCHAR}, #{customercomp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tk.sz.model.VoteAnswerVo">
+    insert into v_vote_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="votecode != null">
+        voteCode,
+      </if>
+      <if test="answer1 != null">
+        answer1,
+      </if>
+      <if test="answer2 != null">
+        answer2,
+      </if>
+      <if test="answer3 != null">
+        answer3,
+      </if>
+      <if test="answer4 != null">
+        answer4,
+      </if>
+      <if test="answer5 != null">
+        answer5,
+      </if>
+      <if test="answer6 != null">
+        answer6,
+      </if>
+      <if test="answer7 != null">
+        answer7,
+      </if>
+      <if test="answer8 != null">
+        answer8,
+      </if>
+      <if test="answer9 != null">
+        answer9,
+      </if>
+      <if test="answer10 != null">
+        answer10,
+      </if>
+      <if test="answer11 != null">
+        answer11,
+      </if>
+      <if test="answer12 != null">
+        answer12,
+      </if>
+      <if test="answer13 != null">
+        answer13,
+      </if>
+      <if test="answer14 != null">
+        answer14,
+      </if>
+      <if test="answer15 != null">
+        answer15,
+      </if>
+      <if test="answer16 != null">
+        answer16,
+      </if>
+      <if test="answer17 != null">
+        answer17,
+      </if>
+      <if test="answer18 != null">
+        answer18,
+      </if>
+      <if test="answer19 != null">
+        answer19,
+      </if>
+      <if test="answer20 != null">
+        answer20,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="customername != null">
+        customername,
+      </if>
+      <if test="customertel != null">
+        customertel,
+      </if>
+      <if test="customercomp != null">
+        customerComp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="votecode != null">
+        #{votecode,jdbcType=VARCHAR},
+      </if>
+      <if test="answer1 != null">
+        #{answer1,jdbcType=VARCHAR},
+      </if>
+      <if test="answer2 != null">
+        #{answer2,jdbcType=VARCHAR},
+      </if>
+      <if test="answer3 != null">
+        #{answer3,jdbcType=VARCHAR},
+      </if>
+      <if test="answer4 != null">
+        #{answer4,jdbcType=VARCHAR},
+      </if>
+      <if test="answer5 != null">
+        #{answer5,jdbcType=VARCHAR},
+      </if>
+      <if test="answer6 != null">
+        #{answer6,jdbcType=VARCHAR},
+      </if>
+      <if test="answer7 != null">
+        #{answer7,jdbcType=VARCHAR},
+      </if>
+      <if test="answer8 != null">
+        #{answer8,jdbcType=VARCHAR},
+      </if>
+      <if test="answer9 != null">
+        #{answer9,jdbcType=VARCHAR},
+      </if>
+      <if test="answer10 != null">
+        #{answer10,jdbcType=VARCHAR},
+      </if>
+      <if test="answer11 != null">
+        #{answer11,jdbcType=VARCHAR},
+      </if>
+      <if test="answer12 != null">
+        #{answer12,jdbcType=VARCHAR},
+      </if>
+      <if test="answer13 != null">
+        #{answer13,jdbcType=VARCHAR},
+      </if>
+      <if test="answer14 != null">
+        #{answer14,jdbcType=VARCHAR},
+      </if>
+      <if test="answer15 != null">
+        #{answer15,jdbcType=VARCHAR},
+      </if>
+      <if test="answer16 != null">
+        #{answer16,jdbcType=VARCHAR},
+      </if>
+      <if test="answer17 != null">
+        #{answer17,jdbcType=VARCHAR},
+      </if>
+      <if test="answer18 != null">
+        #{answer18,jdbcType=VARCHAR},
+      </if>
+      <if test="answer19 != null">
+        #{answer19,jdbcType=VARCHAR},
+      </if>
+      <if test="answer20 != null">
+        #{answer20,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null">
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customertel != null">
+        #{customertel,jdbcType=VARCHAR},
+      </if>
+      <if test="customercomp != null">
+        #{customercomp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tk.sz.model.VoteAnswerVo">
+    update v_vote_answer
+    <set>
+      <if test="votecode != null">
+        voteCode = #{votecode,jdbcType=VARCHAR},
+      </if>
+      <if test="answer1 != null">
+        answer1 = #{answer1,jdbcType=VARCHAR},
+      </if>
+      <if test="answer2 != null">
+        answer2 = #{answer2,jdbcType=VARCHAR},
+      </if>
+      <if test="answer3 != null">
+        answer3 = #{answer3,jdbcType=VARCHAR},
+      </if>
+      <if test="answer4 != null">
+        answer4 = #{answer4,jdbcType=VARCHAR},
+      </if>
+      <if test="answer5 != null">
+        answer5 = #{answer5,jdbcType=VARCHAR},
+      </if>
+      <if test="answer6 != null">
+        answer6 = #{answer6,jdbcType=VARCHAR},
+      </if>
+      <if test="answer7 != null">
+        answer7 = #{answer7,jdbcType=VARCHAR},
+      </if>
+      <if test="answer8 != null">
+        answer8 = #{answer8,jdbcType=VARCHAR},
+      </if>
+      <if test="answer9 != null">
+        answer9 = #{answer9,jdbcType=VARCHAR},
+      </if>
+      <if test="answer10 != null">
+        answer10 = #{answer10,jdbcType=VARCHAR},
+      </if>
+      <if test="answer11 != null">
+        answer11 = #{answer11,jdbcType=VARCHAR},
+      </if>
+      <if test="answer12 != null">
+        answer12 = #{answer12,jdbcType=VARCHAR},
+      </if>
+      <if test="answer13 != null">
+        answer13 = #{answer13,jdbcType=VARCHAR},
+      </if>
+      <if test="answer14 != null">
+        answer14 = #{answer14,jdbcType=VARCHAR},
+      </if>
+      <if test="answer15 != null">
+        answer15 = #{answer15,jdbcType=VARCHAR},
+      </if>
+      <if test="answer16 != null">
+        answer16 = #{answer16,jdbcType=VARCHAR},
+      </if>
+      <if test="answer17 != null">
+        answer17 = #{answer17,jdbcType=VARCHAR},
+      </if>
+      <if test="answer18 != null">
+        answer18 = #{answer18,jdbcType=VARCHAR},
+      </if>
+      <if test="answer19 != null">
+        answer19 = #{answer19,jdbcType=VARCHAR},
+      </if>
+      <if test="answer20 != null">
+        answer20 = #{answer20,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null">
+        customername = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customertel != null">
+        customertel = #{customertel,jdbcType=VARCHAR},
+      </if>
+      <if test="customercomp != null">
+        customerComp = #{customercomp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tk.sz.model.VoteAnswerVo">
+    update v_vote_answer
+    set voteCode = #{votecode,jdbcType=VARCHAR},
+      answer1 = #{answer1,jdbcType=VARCHAR},
+      answer2 = #{answer2,jdbcType=VARCHAR},
+      answer3 = #{answer3,jdbcType=VARCHAR},
+      answer4 = #{answer4,jdbcType=VARCHAR},
+      answer5 = #{answer5,jdbcType=VARCHAR},
+      answer6 = #{answer6,jdbcType=VARCHAR},
+      answer7 = #{answer7,jdbcType=VARCHAR},
+      answer8 = #{answer8,jdbcType=VARCHAR},
+      answer9 = #{answer9,jdbcType=VARCHAR},
+      answer10 = #{answer10,jdbcType=VARCHAR},
+      answer11 = #{answer11,jdbcType=VARCHAR},
+      answer12 = #{answer12,jdbcType=VARCHAR},
+      answer13 = #{answer13,jdbcType=VARCHAR},
+      answer14 = #{answer14,jdbcType=VARCHAR},
+      answer15 = #{answer15,jdbcType=VARCHAR},
+      answer16 = #{answer16,jdbcType=VARCHAR},
+      answer17 = #{answer17,jdbcType=VARCHAR},
+      answer18 = #{answer18,jdbcType=VARCHAR},
+      answer19 = #{answer19,jdbcType=VARCHAR},
+      answer20 = #{answer20,jdbcType=VARCHAR},
+      usercode = #{usercode,jdbcType=VARCHAR},
+      customername = #{customername,jdbcType=VARCHAR},
+      customertel = #{customertel,jdbcType=VARCHAR},
+      customerComp = #{customercomp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getProductData" resultType="com.tk.sz.template.KmhProductDto">
+    SELECT
+        answer1 AS product,
+        count(*) AS num
+    FROM
+        v_vote_answer
+    WHERE
+        voteCode = #{voteCode}
+    GROUP BY
+        answer1
+  </select>
+
+  <select id="getDeptData" resultType="com.tk.sz.template.KmhDeptDto">
+    SELECT
+        answer2 AS dept,
+        sum(answer3) AS deptMoney
+    FROM
+        v_vote_answer
+    WHERE
+        voteCode = #{voteCode}
+    GROUP BY
+        answer2
+    ORDER BY
+        deptMoney DESC
+    LIMIT 10
+  </select>
+
+  <select id="getEmpData" resultType="com.tk.sz.template.KmhEmpDto">
+    SELECT
+        CASE answer2
+    WHEN '信息技术部' THEN
+        concat(customername, '（IT）')
+    WHEN '客户运营部' THEN
+        concat(customername, '（运营）')
+    WHEN '健康保险部' THEN
+        concat(customername, '（健康险）')
+    WHEN '综拓业务部' THEN
+        concat(customername, '（综拓）')
+    WHEN '合规法律与风险管理部' THEN
+        concat(customername, '（合规）')
+    WHEN '总经理室' THEN
+        concat(customername, '（总）')
+    WHEN '深圳三大区' THEN
+        concat(customername, '（三大区）')
+    WHEN '中介业务部' THEN
+        concat(customername, '（中介）')
+    WHEN '深圳二大区' THEN
+        concat(customername, '（二大区）')
+    WHEN 'BBC支持部' THEN
+        concat(customername, '（BBC）')
+    WHEN '办公室' THEN
+        concat(customername, '（办公室）')
+    WHEN '组织建设部' THEN
+        concat(customername, '（组发）')
+    WHEN '计划财务部' THEN
+        concat(customername, '（财务）')
+    WHEN '人力资源部' THEN
+        concat(customername, '（人力）')
+    WHEN '养老金支持部' THEN
+        concat(customername, '（养老金）')
+    WHEN '深圳一大区' THEN
+        concat(customername, '（一大区）')
+    WHEN '深圳四大区' THEN
+        concat(customername, '（四大区）')
+    WHEN '深圳五大区' THEN
+        concat(customername, '（五大区）')
+    END AS empName,
+     sum(answer3) AS empMoney,
+     answer2 AS empDept
+    FROM
+        v_vote_answer
+    WHERE
+        voteCode = #{voteCode}
+    GROUP BY
+        customername,
+        customertel,
+        answer2
+    ORDER BY
+        empMoney DESC
+    LIMIT 10
+  </select>
+
+  <select id="getTotalNum" resultType="java.lang.Integer">
+    SELECT
+        count(*) as totalNum
+    FROM
+        v_vote_answer
+    WHERE
+        voteCode = #{voteCode}
+  </select>
+
+  <select id="isExist" resultType="java.lang.Integer">
+    SELECT
+        1
+    FROM
+        v_vote_answer
+    WHERE
+        voteCode = #{voteCode}
+    AND customername = #{name}
+    AND customertel = #{tel}
+    LIMIT 1
+  </select>
+</mapper>

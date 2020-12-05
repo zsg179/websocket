@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.CustomerOldVoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.tk.sz.model.CustomerOldVo">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="votefalg" jdbcType="VARCHAR"
+			property="votefalg" />
+		<result column="voteresult" jdbcType="VARCHAR"
+			property="voteresult" />
+		<result column="createdate" jdbcType="TIMESTAMP"
+			property="createdate" />
+		<result column="updatedate" jdbcType="TIMESTAMP"
+			property="updatedate" />
+		<result column="usercode" jdbcType="VARCHAR"
+			property="usercode" />
+	    <result column="votecode" jdbcType="VARCHAR"
+			property="votecode" />		
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, votefalg, voteresult, createdate, updatedate,
+		usercode , votecode
+	</sql>
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from v_customer_old
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from v_customer_old
+		where id =
+		#{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert"
+		parameterType="com.tk.sz.model.CustomerOldVo">
+		insert into v_customer_old (id, name, votefalg,
+		voteresult, createdate, updatedate,
+		usercode, votecode)
+		values
+		(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{votefalg,jdbcType=VARCHAR},
+		#{voteresult,jdbcType=VARCHAR},
+		#{createdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP},
+		#{usercode,jdbcType=VARCHAR}, #{votecode,jdbcType=VARCHAR}  )
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.tk.sz.model.CustomerOldVo">
+		insert into v_customer_old
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="votefalg != null">
+				votefalg,
+			</if>
+			<if test="voteresult != null">
+				voteresult,
+			</if>
+			<if test="createdate != null">
+				createdate,
+			</if>
+			<if test="updatedate != null">
+				updatedate,
+			</if>
+			<if test="usercode != null">
+				usercode,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="votefalg != null">
+				#{votefalg,jdbcType=VARCHAR},
+			</if>
+			<if test="voteresult != null">
+				#{voteresult,jdbcType=VARCHAR},
+			</if>
+			<if test="createdate != null">
+				#{createdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedate != null">
+				#{updatedate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usercode != null">
+				#{usercode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.tk.sz.model.CustomerOldVo">
+		update v_customer_old
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="votefalg != null">
+				votefalg = #{votefalg,jdbcType=VARCHAR},
+			</if>
+			<if test="voteresult != null">
+				voteresult = #{voteresult,jdbcType=VARCHAR},
+			</if>
+			<if test="createdate != null">
+				createdate = #{createdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usercode != null">
+				usercode = #{usercode,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.tk.sz.model.CustomerOldVo">
+		update v_customer_old
+		set name =
+		#{name,jdbcType=VARCHAR},
+		votefalg = #{votefalg,jdbcType=VARCHAR},
+		voteresult = #{voteresult,jdbcType=VARCHAR},
+		createdate =
+		#{createdate,jdbcType=TIMESTAMP},
+		updatedate =
+		#{updatedate,jdbcType=TIMESTAMP},
+		usercode =
+		#{usercode,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<select id="selectByName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from v_customer_old
+		where name = #{name,jdbcType=VARCHAR} and  votecode = #{votecode,jdbcType=VARCHAR} 
+	</select>
+
+
+	<update id="updateByName"
+		parameterType="com.tk.sz.model.CustomerOldVo">
+		update v_customer_old
+		set
+		votefalg =
+		#{votefalg,jdbcType=VARCHAR},
+		updatedate = SYSDATE(),
+		voteresult =
+		#{voteresult,jdbcType=VARCHAR},
+		usercode =#{usercode,jdbcType=VARCHAR}
+		where name = #{name,jdbcType=VARCHAR}
+	</update>
+
+
+</mapper>

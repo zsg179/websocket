@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.VoteUserVoMapper">
+  <resultMap id="BaseResultMap" type="com.tk.sz.model.VoteUserVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="userdeptchannel" jdbcType="VARCHAR" property="userdeptchannel" />
+    <result column="userdept" jdbcType="VARCHAR" property="userdept" />
+    <result column="usertel" jdbcType="VARCHAR" property="usertel" />
+     <result column="votecode" jdbcType="VARCHAR" property="votecode" />
+    <result column="votetimes" jdbcType="INTEGER" property="votetimes" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, usercode, username, userdeptchannel, userdept, usertel, votetimes,votecode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_vote_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_vote_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tk.sz.model.VoteUserVo">
+    insert into v_vote_user (id, usercode, username, 
+      userdeptchannel, userdept, usertel, 
+      votetimes,votecode)
+    values (#{id,jdbcType=INTEGER}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{userdeptchannel,jdbcType=VARCHAR}, #{userdept,jdbcType=VARCHAR}, #{usertel,jdbcType=VARCHAR}, 
+      #{votetimes,jdbcType=INTEGER} , #{votecode,jdbcType=VARCHAR}  )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tk.sz.model.VoteUserVo">
+    insert into v_vote_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="userdeptchannel != null">
+        userdeptchannel,
+      </if>
+      <if test="userdept != null">
+        userdept,
+      </if>
+      <if test="usertel != null">
+        usertel,
+      </if>
+      <if test="votetimes != null">
+        votetimes,
+      </if>
+       <if test="votecode != null">
+        votecode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userdeptchannel != null">
+        #{userdeptchannel,jdbcType=VARCHAR},
+      </if>
+      <if test="userdept != null">
+        #{userdept,jdbcType=VARCHAR},
+      </if>
+      <if test="usertel != null">
+        #{usertel,jdbcType=VARCHAR},
+      </if>
+      <if test="votetimes != null">
+        #{votetimes,jdbcType=INTEGER},
+      </if>
+       <if test="votecode != null">
+        #{votecode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tk.sz.model.VoteUserVo">
+    update v_vote_user
+    <set>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userdeptchannel != null">
+        userdeptchannel = #{userdeptchannel,jdbcType=VARCHAR},
+      </if>
+      <if test="userdept != null">
+        userdept = #{userdept,jdbcType=VARCHAR},
+      </if>
+      <if test="usertel != null">
+        usertel = #{usertel,jdbcType=VARCHAR},
+      </if>
+      <if test="votetimes != null">
+        votetimes = #{votetimes,jdbcType=INTEGER},
+      </if>
+        <if test="votecode != null">
+        votecode = #{votecode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tk.sz.model.VoteUserVo">
+    update v_vote_user
+    set usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      userdeptchannel = #{userdeptchannel,jdbcType=VARCHAR},
+      userdept = #{userdept,jdbcType=VARCHAR},
+      usertel = #{usertel,jdbcType=VARCHAR},
+      votetimes = #{votetimes,jdbcType=INTEGER},
+      votecode = #{votecode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectVoteUserVoByUserCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_vote_user
+    where  usercode = #{usercode,jdbcType=VARCHAR}
+  </select>
+
+	<update id="updateByUserCode" parameterType="com.tk.sz.model.VoteUserVo">
+		update v_vote_user
+		<set>
+			votetimes = votetimes - 1
+		</set>
+		where usercode = #{usercode,jdbcType=VARCHAR}
+	</update>
+	
+	
+		<update id="updateByUserCodeAndVoteCode" parameterType="com.tk.sz.model.VoteUserVo">
+		update v_vote_user
+		<set>
+			votetimes = votetimes - 1
+		</set>
+		where usercode = #{usercode,jdbcType=VARCHAR}  and  votecode = #{votecode,jdbcType=VARCHAR}
+	</update>
+	
+	
+  <select id="selectVoteUserVoByUserName" parameterType="java.lang.String"	resultType="map">
+   select 
+    <include refid="Base_Column_List" />
+    from v_vote_user
+    where  username = #{username,jdbcType=VARCHAR}
+  </select>
+  
+  
+   <select id="selectVoteUserVoByUserCodeAndVoteCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_vote_user
+    where  usercode = #{usercode,jdbcType=VARCHAR}    and   votecode = #{votecode,jdbcType=VARCHAR}
+  </select>
+  
+  
+</mapper>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.InsureInfoVoMapper">
+  <resultMap id="BaseResultMap" type="com.tk.sz.model.InsureInfoVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="applicantName" jdbcType="VARCHAR" property="applicantName" />
+    <result column="applicantTel" jdbcType="VARCHAR" property="applicantTel" />
+    <result column="applicantAge" jdbcType="VARCHAR" property="applicantAge" />
+    <result column="applicantSex" jdbcType="VARCHAR" property="applicantSex" />
+    <result column="insuredName" jdbcType="VARCHAR" property="insuredName" />
+    <result column="insuredAge" jdbcType="VARCHAR" property="insuredAge" />
+    <result column="insuredSex" jdbcType="VARCHAR" property="insuredSex" />
+    <result column="insuredRelation" jdbcType="VARCHAR" property="insuredRelation" />
+    <result column="productCode" jdbcType="VARCHAR" property="productCode" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, applicantName, applicantTel, applicantAge, applicantSex, insuredName, insuredAge, 
+    insuredSex, insuredRelation, productCode, company, department
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_account_sz
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_account_sz
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tk.sz.model.InsureInfoVo">
+    insert into v_account_sz (id, applicantName, applicantTel, 
+      applicantAge, applicantSex, insuredName, 
+      insuredAge, insuredSex, insuredRelation, 
+      productCode, company, department
+      )
+    values (#{id,jdbcType=INTEGER}, #{applicantName,jdbcType=VARCHAR}, #{applicantTel,jdbcType=VARCHAR}, 
+      #{applicantAge,jdbcType=VARCHAR}, #{applicantSex,jdbcType=VARCHAR}, #{insuredName,jdbcType=VARCHAR}, 
+      #{insuredAge,jdbcType=VARCHAR}, #{insuredSex,jdbcType=VARCHAR}, #{insuredRelation,jdbcType=VARCHAR}, 
+      #{productCode,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tk.sz.model.InsureInfoVo">
+    insert into v_account_sz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="applicantName != null">
+        applicantName,
+      </if>
+      <if test="applicantTel != null">
+        applicantTel,
+      </if>
+      <if test="applicantAge != null">
+        applicantAge,
+      </if>
+      <if test="applicantSex != null">
+        applicantSex,
+      </if>
+      <if test="insuredName != null">
+        insuredName,
+      </if>
+      <if test="insuredAge != null">
+        insuredAge,
+      </if>
+      <if test="insuredSex != null">
+        insuredSex,
+      </if>
+      <if test="insuredRelation != null">
+        insuredRelation,
+      </if>
+      <if test="productCode != null">
+        productCode,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applicantName != null">
+        #{applicantName,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantTel != null">
+        #{applicantTel,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantAge != null">
+        #{applicantAge,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantSex != null">
+        #{applicantSex,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null">
+        #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredAge != null">
+        #{insuredAge,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredSex != null">
+        #{insuredSex,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredRelation != null">
+        #{insuredRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tk.sz.model.InsureInfoVo">
+    update v_account_sz
+    <set>
+      <if test="applicantName != null">
+        applicantName = #{applicantName,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantTel != null">
+        applicantTel = #{applicantTel,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantAge != null">
+        applicantAge = #{applicantAge,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantSex != null">
+        applicantSex = #{applicantSex,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null">
+        insuredName = #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredAge != null">
+        insuredAge = #{insuredAge,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredSex != null">
+        insuredSex = #{insuredSex,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredRelation != null">
+        insuredRelation = #{insuredRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        productCode = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tk.sz.model.InsureInfoVo">
+    update v_account_sz
+    set applicantName = #{applicantName,jdbcType=VARCHAR},
+      applicantTel = #{applicantTel,jdbcType=VARCHAR},
+      applicantAge = #{applicantAge,jdbcType=VARCHAR},
+      applicantSex = #{applicantSex,jdbcType=VARCHAR},
+      insuredName = #{insuredName,jdbcType=VARCHAR},
+      insuredAge = #{insuredAge,jdbcType=VARCHAR},
+      insuredSex = #{insuredSex,jdbcType=VARCHAR},
+      insuredRelation = #{insuredRelation,jdbcType=VARCHAR},
+      productCode = #{productCode,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

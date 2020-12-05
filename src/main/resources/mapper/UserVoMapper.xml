@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tk.sz.dao.UserVoMapper">
+  <resultMap id="BaseResultMap" type="com.tk.sz.model.UserVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="userpw" jdbcType="VARCHAR" property="userpw" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="createcode" jdbcType="VARCHAR" property="createcode" />
+    <result column="updatedate" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="updatecode" jdbcType="VARCHAR" property="updatecode" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="deptment" jdbcType="VARCHAR" property="deptment" />
+    <result column="workcode" jdbcType="VARCHAR" property="workcode" />
+  </resultMap>
+ 
+   <sql id="Base_Column_List">
+    id, usercode, username, userpw, createdate, createcode, updatedate, updatecode, telphone, 
+    deptment, workcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tk.sz.model.UserVo">
+    insert into v_user (id, usercode, username, 
+      userpw, createdate, createcode, 
+      updatedate, updatecode, telphone, 
+      deptment, workcode)
+    values (#{id,jdbcType=INTEGER}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{userpw,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{createcode,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{updatecode,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{deptment,jdbcType=VARCHAR}, #{workcode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tk.sz.model.UserVo">
+    insert into v_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="userpw != null">
+        userpw,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="createcode != null">
+        createcode,
+      </if>
+      <if test="updatedate != null">
+        updatedate,
+      </if>
+      <if test="updatecode != null">
+        updatecode,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="deptment != null">
+        deptment,
+      </if>
+      <if test="workcode != null">
+        workcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpw != null">
+        #{userpw,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createcode != null">
+        #{createcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatecode != null">
+        #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="deptment != null">
+        #{deptment,jdbcType=VARCHAR},
+      </if>
+      <if test="workcode != null">
+        #{workcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tk.sz.model.UserVo">
+    update v_user
+    <set>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpw != null">
+        userpw = #{userpw,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createcode != null">
+        createcode = #{createcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        updatedate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatecode != null">
+        updatecode = #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="deptment != null">
+        deptment = #{deptment,jdbcType=VARCHAR},
+      </if>
+      <if test="workcode != null">
+        workcode = #{workcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tk.sz.model.UserVo">
+    update v_user
+    set usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      userpw = #{userpw,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      createcode = #{createcode,jdbcType=VARCHAR},
+      updatedate = #{updatedate,jdbcType=TIMESTAMP},
+      updatecode = #{updatecode,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      deptment = #{deptment,jdbcType=VARCHAR},
+      workcode = #{workcode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  <select id="selectByUserVo" parameterType="com.tk.sz.model.UserVo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_user
+    where 1=1 
+    	    <if test="id != null and id != '' ">
+    	    	and id =  #{id, jdbcType=INTEGER}
+    	    </if>
+    	    <if test="username != null and username != '' ">
+    	    	and	username = #{username, jdbcType=VARCHAR}
+    	    </if>
+    	    <if test="telphone != null and telphone != '' ">
+    	    	and telphone = #{telphone, jdbcType=VARCHAR}
+    	    </if>
+  </select>
+  
+</mapper>
